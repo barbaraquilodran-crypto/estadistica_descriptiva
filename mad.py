@@ -1,25 +1,31 @@
-def mad(vals,in):
-    
-     """
-    calcula el MAD d una distribucion. ignora valores NaN
-    Parámetros
-    ----------
-    vals:list
-        lista con los valores 
-    retorna
-    -------
-    mad :float
-    la desviacion absoluta de los datos
+"""
+Función para calcular la Desviación Absoluta de la Mediana (MAD)
+"""
+
+from mediana import mediana
+
+def mad(datos):
     """
-    #eliminar los valores NaNs
-    vals =[]
-    for v in vals_in:
-        if math.isfinite(v):
-            vals.append(v)
-#CALCULAR MEDIANA 
-    med = mediana(vals)#COLOCAR EL NOMBRE DE COMO YA TENGO GUARDADA LA MEDIANA
-    desviaciones_absolutas = []
-    for v in vals:
-    desviaciones_abs.append(abs(v -  med))
-        mad = mediana(desviaciones_abs)
-    return mad
+    Calcula la Desviación Absoluta de la Mediana (MAD).
+    
+    Parámetros:
+    -----------
+    datos : list o array
+        Conjunto de datos numéricos
+    
+    Retorna:
+    --------
+    float : MAD de los datos
+    
+    Fórmula:
+    --------
+    MAD = mediana(|x_i - mediana(x)|)
+    """
+    # Calcular la mediana de los datos
+    m = mediana(datos)
+    
+    # Calcular las desviaciones absolutas respecto a la mediana
+    desviaciones_absolutas = [abs(x - m) for x in datos]
+    
+    # Retornar la mediana de las desviaciones absolutas
+    return mediana(desviaciones_absolutas)
